@@ -1,19 +1,51 @@
 # dobby_rest
+
 RESTish interface to dobby, the graph store
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc/generate-toc again -->
+**Table of Contents**
+
+- [dobby_rest](#dobby_rest)
+    - [Building](#building)
+    - [Running](#running)
+    - [Testing](#testing)
+    - [HTTP response codes](#http-response-codes)
+    - [Identifiers](#identifiers)
+        - [Example 1 - identifier JSON response object:](#example-1---identifier-json-response-object)
+        - [Example 2 - create identifier JSON request body](#example-2---create-identifier-json-request-body)
+        - [Links](#links)
+            - [Example 3 - create link request body](#example-3---create-link-request-body)
+            - [Example 4 - link JSON response object](#example-4---link-json-response-object)
+        - [Identifier Metadata](#identifier-metadata)
+        - [Link Metadata](#link-metadata)
+        - [Search](#search)
+        - [Example 6 - search request JSON body](#example-6---search-request-json-body)
+        - [Example 7 - match_path example](#example-7---matchpath-example)
+        - [Example 8 - search response JSON](#example-8---search-response-json)
+
+<!-- markdown-toc end -->
+
+
 ###Requirements
-1. [dobby](https://github.com/shivarammysore/dobby).
+1. [dobby](https://github.com/ivanos/dobby_core_lib).
 2. Erlang R17
 
 ###Building
-1. make compile
-2. make generate
+To build the application call: `make`.
 
 ###Running
-1. dobby must be running
-2. rel/dobby_rest/bin/dobby_rest console
+dobby must be running. To run `dobby_rest` as an Erlang node use
+[dobby_allinone_node](https://github.com/ivanos/dobby_allinone_node).
 
-Note that some request errors are reported to the dobby_rest console. Check the logs if dobby_rest returns status 500 to the REST client.
+To run `dobby_rest` straight away call `make dev`. To connect to dobby
+call:
+
+```erlang
+pong = net_adm:ping('dobby@127.0.0.1').
+```
+
+Note that some request errors are reported to the dobby_rest console.
+Check the logs if dobby_rest returns status 500 to the REST client.
 
 ###Testing
 You can use the Google Chrome extension [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en)
